@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Home - Flask 2FA App{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1>Welcome, {{ current_user.id }}!</h1>
+    {% if not current_user.is_two_factor_enabled %}
+        <p><a href="{{ url_for('two_factor_setup') }}" class="btn btn-warning">Enable Two-Factor Authentication</a></p>
+    {% else %}
+        <p class="text-success">Two-Factor Authentication is enabled on your account.</p>
+    {% endif %}
+</div>
+{% endblock %}
